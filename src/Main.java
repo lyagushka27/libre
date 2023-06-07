@@ -1,27 +1,27 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-        Library lib = new Library();
 
-        Book[] books1 = {
-                new Book("Энциклопедия", "Пушкин"),
-                new Book("Приключения", "Антон"),
-                new Book("Словарь", "Тоже Антон")
-        };
-        Book[] books2 = {
-                new Book("Книги", "Пушкин"),
-                new Book("На", "Антон"),
-                new Book("Выдачу", "Тоже Антон")
-        };
+        // Создаём массив чителей
+        ArrayList<Reader> readers = new ArrayList<>();
+        readers.add(new Reader("Саша"));
+        readers.add(new Reader("Маша"));
 
+        // Создаём массив книг
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Лето в пионерсокм галстуке", "Пушкин А.С."));
+        books.add(new Book("О чем молчит ласточка", "Лермонтов М.Ю"));
+        books.add(new Book("Тетрадь смерти", "Хаяо Миадзаки"));
+        books.add(new Book("Очень странные дела", "Хаяо Миадзаки"));
 
-        lib.takeBook(3);
-        lib.takeBook(books1);
+        // Создаём библеотеку, которая будет распоряжаться массивами читателей и книг
+        Library library = new Library(readers, books);
+        Menu menu = new Menu (library);
 
-        lib.returnBook(1);
-        lib.returnBook(books2);
+        // Запускаем меню для управления
+        menu.start();
 
-        Book[] books3 = {};
-        lib.takeBook(books3);
     }
 }
